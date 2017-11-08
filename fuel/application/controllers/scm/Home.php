@@ -21,10 +21,13 @@ class Home extends CI_Controller {
             $adminsession = $this->session->userdata('scmadmin_session');
             $isAuthenticated = $adminsession['IsAuthenticated'];
             $isAdmin = $adminsession['IsAdmin'];
+            $email['Email'] = $adminsession['Email'];
+            
             if ($isAuthenticated && $isAdmin) {
-                $this->load->view('SCM/_header');     
-                $this->load->view('SCM/home');
+                $this->load->view('SCM/_header',$email);     
+                $this->load->view('SCM/home');  
                 $this->load->view('SCM/_footer');
+                
             } 
         }
         else {

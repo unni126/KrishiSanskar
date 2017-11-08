@@ -34,12 +34,13 @@ class Products extends CI_Controller {
                 'Category' => $this->input->post('category'),
                 'Price' => $this->input->post('price'),
                 'Description' => $this->input->post('description'),
-                'Image' => 'None',
+                'Images' => 'None',
                 'Quantity' => $this->input->post('quantity'),
                 'CreatedBy' => 'Admin',
                 'CreatedDate' => date("Y/m/d"),
-                'UpdatedBy' => 'Admin',
-                'UpdatedDate' => date("Y/m/d")
+                'ModifiedBy' => 'Admin',
+                'ModifiedDate' => date("Y/m/d"),
+                'Active' => True
         );
 	$this->ProductsModel->add($data);
         

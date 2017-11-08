@@ -34,11 +34,9 @@ class ProductCategory extends CI_Controller {
                 'Description' => $this->input->post('description'),
                 'CreatedBy' => 'Admin',
                 'CreatedDate' => date("Y/m/d"),
-                'UpdatedBy' => 'Admin',
-                'UpdatedDate' => date("Y/m/d")
+                'ModifiedBy' => 'Admin',
+                'ModifiedDate' => date("Y/m/d")
         );
-	//$this->db->insert('product_category',$data);
-        
         $this->ProductCategoryModel->add($data);
         
         redirect('/scm/productcategory/', 'refresh');    

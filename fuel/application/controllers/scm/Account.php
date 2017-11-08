@@ -35,4 +35,9 @@ class Account extends CI_Controller {
             $this->load->view('SCM/login');
         }
     }   
+    
+    public function logout() {
+        $this->LoginModel->Logout();
+        redirect('/scm/account/'); 
+    }  
 }
