@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Home extends CI_Controller {
+class Home extends BaseController {
 
     //put your code here
 
@@ -17,21 +17,23 @@ class Home extends CI_Controller {
     }
 
     public function index() {
-        if(isset($_SESSION['scmadmin_session'])){
-            $adminsession = $this->session->userdata('scmadmin_session');
-            $isAuthenticated = $adminsession['IsAuthenticated'];
-            $isAdmin = $adminsession['IsAdmin'];
-            $email['Email'] = $adminsession['Email'];
-            
-            if ($isAuthenticated && $isAdmin) {
-                $this->load->view('SCM/_header',$email);     
-                $this->load->view('SCM/home');  
-                $this->load->view('SCM/_footer');
-                
-            } 
-        }
-        else {
-            redirect('/scm/account/', 'refresh');            
-        }        
+//        if(isset($_SESSION['scmadmin_session'])){
+//            $adminsession = $this->session->userdata('scmadmin_session');
+//            $isAuthenticated = $adminsession['IsAuthenticated'];
+//            $isAdmin = $adminsession['IsAdmin'];            
+//            if ($isAuthenticated && $isAdmin) {
+//                $this->load->view('SCM/_header');     
+//                $this->load->view('SCM/home');  
+//                $this->load->view('SCM/_footer');                
+//            } 
+//        }
+//        else {
+//            redirect('/scm/account/', 'refresh');            
+//        }   
+
+        $this->load->view('SCM/_header');
+        $this->load->view('SCM/home');
+        $this->load->view('SCM/_footer');
     }
+
 }

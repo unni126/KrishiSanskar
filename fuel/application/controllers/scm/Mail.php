@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Mail extends CI_Controller {
+class Mail extends BaseController {
 
     //put your code here
 
@@ -14,6 +14,7 @@ class Mail extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('form');
+        $this->load->model('MailModel');
     }
 
     public function inbox() {
@@ -22,8 +23,9 @@ class Mail extends CI_Controller {
             $isAuthenticated = $adminsession['IsAuthenticated'];
             $isAdmin = $adminsession['IsAdmin'];
             if ($isAuthenticated && $isAdmin) {
+                $data['Mails'] = $this->MailModel->get();
                 $this->load->view('SCM/_header');     
-                $this->load->view('SCM/inbox');
+                $this->load->view('SCM/inbox',$data);
                 $this->load->view('SCM/_footer');
             } 
         }

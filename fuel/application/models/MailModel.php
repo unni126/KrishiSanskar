@@ -1,6 +1,6 @@
 <?php
 
-class ProductCategoryModel extends CI_Model {
+class MailModel extends CI_Model {
 
     public function __construct() {
         parent::__construct();
@@ -8,13 +8,13 @@ class ProductCategoryModel extends CI_Model {
     }
 
     function get() {        
-        $query = $this->db->get('product_category');
+        $query = $this->db->get('ks_mailbox');
         return $query->result();
     }
     
     function add($data) {
         try{
-            $this->db->insert('product_category',$data );
+            $this->db->insert('ks_mailbox',$data );
         }
         catch (Exception $e){
              if ($e->errorInfo[1] == 1062) 
@@ -27,7 +27,7 @@ class ProductCategoryModel extends CI_Model {
     function delete($id) {
         try{
             $this->db->where('Id', $id);
-            $this->db->delete('product_category');
+            $this->db->delete('ks_mailbox');
         }
         catch (Exception $e){
                  return  "Unable to delete this item!";
@@ -36,7 +36,7 @@ class ProductCategoryModel extends CI_Model {
     
     function getById($id) {
         try{
-            return $this->db->get_where('product_category', array('id' => $id))->row();
+            return $this->db->get_where('ks_mailbox', array('id' => $id))->row();
         }
         catch (Exception $e){
                  return  "Unable to delete this item!";
@@ -46,22 +46,22 @@ class ProductCategoryModel extends CI_Model {
     function update($data, $id) {
         try{
             $this->db->where('Id', $id);
-            $this->db->update('product_category', $data);
+            $this->db->update('ks_mailbox', $data);
             return true;
         }
         catch (Exception $e){
-                 return  "Unable to update this item!";
+                 return  "Unable to delete this item!";
         }
     }
     
     function changeStatus($data, $id) {
         try{
             $this->db->where('Id', $id);
-            $this->db->update('product_category', $data);
+            $this->db->update('ks_mailbox', $data);
             return true;
         }
         catch (Exception $e){
-                 return  "Unable to change the status of this item!";
+                 return  "Unable to delete this item!";
         }
     }
 }
